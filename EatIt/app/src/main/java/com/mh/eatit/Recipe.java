@@ -8,29 +8,19 @@ import android.widget.RatingBar;
 
 import java.util.List;
 
-@Entity
 public class Recipe {
-    @PrimaryKey
     private String mName;
-    @ColumnInfo(name = "rating_bar")
-    private RatingBar mRatingBar;
-    @ColumnInfo(name = "complexity")
+    private Integer mRatingBar;
     private String mComplexity;
-    @ColumnInfo(name = "notes")
     private String mNotes;
-    @ColumnInfo(name = "type")
     private String mType;
-    @ColumnInfo(name = "prep_time")
     private int mPrepTime;
-    @ColumnInfo(name = "picture_url")
     private String pictureUrl;
-    @ColumnInfo(name = "ingerdient_list")
     private List<Ingredient> mIngredients;
-    @ColumnInfo(name = "quantity_vector")
     private List<Integer> mQuantities;
 
     public Recipe (){}
-    public Recipe(String mName, RatingBar mRatingBar, String mComplexity, String mNotes, String mType, int mPrepTime, String pictureUrl, List<Ingredient> mIngredients) {
+    public Recipe(String mName, Integer mRatingBar, String mComplexity, String mNotes, String mType, int mPrepTime, String pictureUrl, List<Ingredient> mIngredients) {
         this.mName = mName;
         this.mRatingBar = mRatingBar;
         this.mComplexity = mComplexity;
@@ -49,11 +39,11 @@ public class Recipe {
         this.mName = mName;
     }
 
-    public RatingBar getmRatingBar() {
+    public Integer getmRatingBar() {
         return mRatingBar;
     }
 
-    public void setmRatingBar(RatingBar mRatingBar) {
+    public void setmRatingBar(Integer mRatingBar) {
         this.mRatingBar = mRatingBar;
     }
 

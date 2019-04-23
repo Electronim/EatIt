@@ -5,7 +5,11 @@
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+=======
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8 (1)" project-jdk-type="JavaSDK">
+>>>>>>> 70e55dfc1430f8ae7ae4f73f25370c3cfa1a5b63
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">
