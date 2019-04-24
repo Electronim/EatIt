@@ -26,5 +26,11 @@ public class MainActivity extends AppCompatActivity {
         Recipe firstRecipe = new Recipe("Cartofi copti", 3, "easy","descriere","main dish",30,"deocamdata nu",mlist);
         myRef.child("recipes").child("1001").setValue(firstRecipe);
 
+        RecipeFragment details = new RecipeFragment();
+        details.setArguments(getIntent().getExtras());
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.place_holder, details);
+        ft.commit();
+
     }
 }
