@@ -8,13 +8,13 @@ public class Recipe {
     private String mComplexity;
     private String mNotes;
     private String mType;
-    private int mPrepTime;
+    private Integer mPrepTime;
     private String pictureUrl;
     private List<Ingredient> mIngredients;
     private List<Integer> mQuantities;
 
     public Recipe(){}
-    public Recipe(String mName, Integer mRatingBar, String mComplexity, String mNotes, String mType, int mPrepTime, String pictureUrl, List<Ingredient> mIngredients) {
+    public Recipe(String mName, Integer mRatingBar, String mComplexity, String mNotes, String mType, Integer mPrepTime, String pictureUrl, List<Ingredient> mIngredients) {
         this.mName = mName;
         this.mRatingBar = mRatingBar;
         this.mComplexity = mComplexity;
@@ -65,11 +65,11 @@ public class Recipe {
         this.mType = mType;
     }
 
-    public int getmPrepTime() {
+    public Integer getmPrepTime() {
         return mPrepTime;
     }
 
-    public void setmPrepTime(int mPrepTime) {
+    public void setmPrepTime(Integer mPrepTime) {
         this.mPrepTime = mPrepTime;
     }
 

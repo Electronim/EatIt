@@ -2,6 +2,7 @@ package com.mh.eatitremake;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DatabaseReference;
@@ -18,19 +19,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        List<Ingredient> mlist = new ArrayList<>();
-        mlist.add (new Ingredient("cartofi","not yet",30));
-        mlist.add (new Ingredient("carnat","not yet",30));
-        mlist.add (new Ingredient("branza","not yet",30));
+        /* ---- This one below is used to populate the database. DO NOT REMOVE! ----*/
+        /* Util.parseCSV(getAssets());
+        List<Recipe> recipeData = Util.getData();
 
-        Recipe firstRecipe = new Recipe("Cartofi copti", 3, "easy","descriere","main dish",30,"deocamdata nu",mlist);
-        myRef.child("recipes").child("1001").setValue(firstRecipe);
-
+        for (int i = 0; i < recipeData.size(); i++) {
+            int id = 1000 + i;
+            myRef.child("recipes").child(Integer.toString(id)).setValue(recipeData.get(i));
+        } */
+        /* ------------------------------------------------------------------------- */
+      
         RecipeFragment details = new RecipeFragment();
         details.setArguments(getIntent().getExtras());
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.place_holder, details);
-        ft.commit();
-
+        ft.commit();  
+        
     }
 }
