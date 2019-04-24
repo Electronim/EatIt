@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "765610596806",
+    "firebase_url": "https://eatitremake.firebaseio.com",
+    "project_id": "eatitremake",
+    "storage_bucket": "eatitremake.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765610596806:android:f3fe73111aa0a945",
+        "android_client_info": {
+          "package_name": "com.mh.eatitremake"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "765610596806-7g7o5rlm5ju0fl8843udi3dk333pi908.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mh.eatitremake",
+            "certificate_hash": "754b156271957f878ef7109024ed08297a69404c"
+          }
+        },
+        {
+          "client_id": "765610596806-il64ngqld927cb1crk3b9p2vtavj9mab.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBTdulqthtbCE0RhdXqhpjiv-QldAkTIto"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "765610596806-il64ngqld927cb1crk3b9p2vtavj9mab.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
