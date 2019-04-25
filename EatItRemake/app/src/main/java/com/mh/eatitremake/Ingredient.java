@@ -1,22 +1,26 @@
 package com.mh.eatitremake;
 
 public class Ingredient {
-    private String nume;
+    private String name;
     private String pictureUrl;
     private Integer calories;
 
-    public Ingredient(String nume, String pictureUrl, Integer calories) {
-        this.nume = nume;
+    public Ingredient() {
+
+    }
+
+    public Ingredient(String name, String pictureUrl, Integer calories) {
+        this.name = name;
         this.pictureUrl = pictureUrl;
         this.calories = calories;
     }
 
-    public String getNume() {
-        return nume;
+    public String getName() {
+        return name;
     }
 
-    public void setNume(String nume) {
-        this.nume = nume;
+    public void setNume(String name) {
+        this.name = name;
     }
 
     public String getPictureUrl() {
