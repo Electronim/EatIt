@@ -20,7 +20,7 @@ import java.util.List;
 
 public class RecipeFragment extends Fragment {
     private RecyclerView mRecyclerView;
-    private RecipeAdapter mTravelAdapter;
+    private RecipeAdapter mRecipeAdapter;
     private List<Recipe> mRecipes;
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
@@ -36,7 +36,7 @@ public class RecipeFragment extends Fragment {
                     mRecipes.add(recipe);
                 }
 
-                mTravelAdapter.notifyDataSetChanged();
+                mRecipeAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -76,8 +76,8 @@ public class RecipeFragment extends Fragment {
 
         Log.d("List: ", mRecipes.toString());
 
-        mTravelAdapter = new RecipeAdapter(mRecipes);
-        mRecyclerView.setAdapter(mTravelAdapter);
+        mRecipeAdapter = new RecipeAdapter(mRecipes);
+        mRecyclerView.setAdapter(mRecipeAdapter);
 
         return rootView;
     }
