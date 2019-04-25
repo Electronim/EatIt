@@ -28,5 +28,12 @@ public class MainActivity extends AppCompatActivity {
             myRef.child("recipes").child(Integer.toString(id)).setValue(recipeData.get(i));
         } */
         /* ------------------------------------------------------------------------- */
+      
+        RecipeFragment details = new RecipeFragment();
+        details.setArguments(getIntent().getExtras());
+        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(R.id.place_holder, details);
+        ft.commit();  
+        
     }
 }
