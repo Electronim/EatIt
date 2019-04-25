@@ -5,6 +5,10 @@ public class Ingredient {
     private String pictureUrl;
     private Integer calories;
 
+    public Ingredient() {
+
+    }
+
     public Ingredient(String name, String pictureUrl, Integer calories) {
         this.name = name;
         this.pictureUrl = pictureUrl;
