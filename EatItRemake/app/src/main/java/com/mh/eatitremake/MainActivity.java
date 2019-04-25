@@ -1,19 +1,26 @@
 package com.mh.eatitremake;
 
+import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.firebase.FirebaseApp;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
+    DatabaseReference myRefChildren = myRef.child("recipes");
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,7 +35,8 @@ public class MainActivity extends AppCompatActivity {
             myRef.child("recipes").child(Integer.toString(id)).setValue(recipeData.get(i));
         } */
         /* ------------------------------------------------------------------------- */
-      
+
+
         RecipeFragment details = new RecipeFragment();
         details.setArguments(getIntent().getExtras());
         android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
