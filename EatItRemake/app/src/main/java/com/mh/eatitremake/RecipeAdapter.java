@@ -33,8 +33,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeViewHolder> {
         Recipe currentRecipe = mRecipes.get(i);
         //Populate the viewholder based on the current Recipe
         recipeViewHolder.nameTextView.setText(currentRecipe.getmName());
-        recipeViewHolder.notesTextView.setText(currentRecipe.getmComplexity() + " prep time:"+currentRecipe.getmPrepTime()+ " description: "+ currentRecipe.getmNotes());
-
+        recipeViewHolder.dificultyTextView.setText(currentRecipe.getmComplexity());
+        recipeViewHolder.preptimeTextView.setText("Prep time: "+ currentRecipe.getmPrepTime().toString());
+        recipeViewHolder.notesTextView.setText("Description: "+ currentRecipe.getmNotes());
+        recipeViewHolder.ratingBar.setRating(currentRecipe.getmRatingBar());
         File imgFile = new File(currentRecipe.getPictureUrl());
 
         if (!currentRecipe.getPictureUrl().isEmpty())
