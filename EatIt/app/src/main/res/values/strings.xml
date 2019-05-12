@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">EatIt</string>
-    <string name="ingredients_selection">Choose Ingredients</string>
-    <string name="browse_recipes">Browse recipes</string>
-    <string name="add_new_recipe">Add new recipe</string>
-    <string name="rate_app">Rate app</string>
-    <string name="settings">Settings</string>
-</resources>
