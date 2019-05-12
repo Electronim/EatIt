@@ -4,8 +4,11 @@ import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -21,6 +24,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<String> recipesNames = new ArrayList<>();
     private ArrayAdapter<String> recipesNameAdapter;
+    private android.support.v4.app.FragmentTransaction ft;
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference myRefChildren = myRef.child("recipes");
@@ -43,18 +47,40 @@ public class MainActivity extends AppCompatActivity {
         /* ------------------------------------------------------------------------- */
 
 
-        RecipeFragment details = new RecipeFragment();
+        final RecipeFragment details = new RecipeFragment();
         details.setArguments(getIntent().getExtras());
-        android.support.v4.app.FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.place_holder, details);
         ft.commit();
 
-        populateRecipes();
-        // System.out.println(details.getRecipes());
+        populateSearchRecipeNames();
+
+        // added search button
+        Button btn = (Button) findViewById(R.id.search_button);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                EditText searchText = (EditText) findViewById(R.id.actv);
+                String recipeName = searchText.getText().toString();
+
+                List<Recipe> recipes = details.getmDatabaseSaved();
+                List<Recipe> result = new ArrayList<>();
+                for (Recipe recipe: recipes) {
+                    if (recipeName.length() == 0) {
+                        result.add(recipe);
+                    } else if (recipe.getmName().equals(recipeName)) {
+                        result.add(recipe);
+                    }
+                }
+
+                details.setmRecipes(result);
+            }
+
+        });
 
     }
 
-    protected void populateRecipes() {
+    protected void populateSearchRecipeNames() {
         myRefChildren.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -73,6 +99,22 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
+        });
+    }
+
+    private void searchButtonImpl() {
+        Button btn = (Button) findViewById(R.id.search_button);
+        btn.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                EditText searchText = (EditText) findViewById(R.id.actv);
+                String recipeName = searchText.getText().toString();
+
+                if (recipeName.length() == 0) {
+
+                }
+            }
+
         });
     }
 }
