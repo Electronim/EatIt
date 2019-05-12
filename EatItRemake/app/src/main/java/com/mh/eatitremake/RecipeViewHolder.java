@@ -16,7 +16,6 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder{
     public RatingBar ratingBar;
     public ImageView recipeImage;
 
-
     public RecipeViewHolder(@NonNull View itemView) {
         super(itemView);
         typeTextView = itemView.findViewById(R.id.recipe_type);

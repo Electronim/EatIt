@@ -10,6 +10,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 
+
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         recipesNameAdapter =
             new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, recipesNames);
@@ -99,22 +101,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCancelled(DatabaseError databaseError) {}
-        });
-    }
-
-    private void searchButtonImpl() {
-        Button btn = (Button) findViewById(R.id.search_button);
-        btn.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                EditText searchText = (EditText) findViewById(R.id.actv);
-                String recipeName = searchText.getText().toString();
-
-                if (recipeName.length() == 0) {
-
-                }
-            }
-
         });
     }
 }

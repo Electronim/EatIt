@@ -1,13 +1,18 @@
 package com.mh.eatitremake;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.constraint.ConstraintLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -31,7 +36,7 @@ public class RecipeFragment extends Fragment {
         myRefChildren.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot recipeDataSnapshot: dataSnapshot.getChildren()) {
+                for (DataSnapshot recipeDataSnapshot : dataSnapshot.getChildren()) {
                     Recipe recipe = recipeDataSnapshot.getValue(Recipe.class);
 
                     mRecipes.add(recipe);
@@ -42,7 +47,8 @@ public class RecipeFragment extends Fragment {
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {}
+            public void onCancelled(DatabaseError databaseError) {
+            }
         });
 
     }
@@ -68,6 +74,25 @@ public class RecipeFragment extends Fragment {
         mRecipeAdapter = new RecipeAdapter(mRecipes);
         mRecyclerView.setAdapter(mRecipeAdapter);
 
+        mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(),
+                mRecyclerView, new ContactClickListener() {
+            @Override
+            public void onClick(View view, final int position) {
+                Log.d("CLICK_TAG", "am dat click pe positia: " + position);
+                // TODO button click inside of recycler view
+                Recipe recipe =mRecipes.get(position);
+                Intent mIntent = new Intent(view.getContext(), RecipeDescriptionActivity.class);
+                mIntent.putExtra("RECIPE_DESCRIPTION",recipe.getmNotes());
+                mIntent.putExtra("RECIPE_URL",recipe.getPictureUrl());
+                startActivity(mIntent);
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+
+        }));
         return rootView;
     }
 
