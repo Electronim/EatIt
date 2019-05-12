@@ -4,6 +4,7 @@ import android.support.annotation.IntegerRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
@@ -43,5 +44,9 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.place_holder, details);
         ft.commit();  
         
+    }
+    public void recipeOnClick(View v){
+
+
     }
 }
