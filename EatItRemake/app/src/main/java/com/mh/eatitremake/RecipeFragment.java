@@ -67,4 +67,9 @@ public class RecipeFragment extends Fragment {
 
         return rootView;
     }
+
+    public List<Recipe> getRecipes(){
+        return mRecipes;
+    }
+
 }
