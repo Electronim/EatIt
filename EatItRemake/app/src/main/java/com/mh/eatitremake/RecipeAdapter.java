@@ -35,7 +35,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeViewHolder> {
         recipeViewHolder.nameTextView.setText(currentRecipe.getmName());
         recipeViewHolder.dificultyTextView.setText(currentRecipe.getmComplexity());
         recipeViewHolder.preptimeTextView.setText("Prep time: "+ currentRecipe.getmPrepTime().toString());
-        recipeViewHolder.notesTextView.setText("Description: "+ currentRecipe.getmNotes());
+        recipeViewHolder.typeTextView.setText("Type: "+ currentRecipe.getmType());
         recipeViewHolder.ratingBar.setRating(currentRecipe.getmRatingBar());
         File imgFile = new File(currentRecipe.getPictureUrl());
 

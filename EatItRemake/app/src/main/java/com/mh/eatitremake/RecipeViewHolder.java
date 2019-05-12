@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 public class RecipeViewHolder extends RecyclerView.ViewHolder{
     public TextView nameTextView;
-    public TextView notesTextView;
     public TextView dificultyTextView;
     public TextView preptimeTextView;
+    public TextView typeTextView;
 
     public RatingBar ratingBar;
     public ImageView recipeImage;
@@ -19,8 +19,8 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder{
 
     public RecipeViewHolder(@NonNull View itemView) {
         super(itemView);
+        typeTextView = itemView.findViewById(R.id.recipe_type);
         nameTextView = itemView.findViewById(R.id.recipe_name);
-        notesTextView = itemView.findViewById(R.id.recipe_notes);
         ratingBar = itemView.findViewById(R.id.ratingbar);
         recipeImage = itemView.findViewById(R.id.imageview_recipe);
         dificultyTextView = itemView.findViewById(R.id.recipe_dificulty);
