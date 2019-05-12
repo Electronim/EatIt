@@ -18,6 +18,7 @@ public class RecipeDescriptionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_recipe_description);
         Animation a = AnimationUtils.loadAnimation(this, R.anim.animations);
         a.reset();
