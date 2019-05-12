@@ -1,0 +1,4 @@
+#Wed Apr 24 01:00:55 EEST 2019
+base.0=/Users/teo/Desktop/Uni Stuff/Semestrul 2/MDS/EatIt/EatIt/app/build/intermediates/transforms/dexMerger/debug/0
+path.0=classes.dex
+renamed.0=classes.dex
