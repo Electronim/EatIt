@@ -14,24 +14,29 @@
 
         <AutoCompleteTextView
             android:id="@+id/actv"
-            android:layout_width="301dp"
+            android:layout_width="280dp"
             android:layout_height="wrap_content"
+            android:background="@color/whiteColor"
+            android:textColor="@android:color/black"
             android:completionHint="Select a recipe"
             android:completionThreshold="1"
-            android:hint="Select a recipe"/>
+            android:hint="Select a recipe" />
 
         <Button
             android:id="@+id/search_button"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="29dp"
+            android:layout_marginLeft="10dp"
+            android:background="@drawable/button_round_shape_black"
             android:text="Search"
+            android:textColor="@android:color/black"
             android:textSize="12sp" />
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/place_holder"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
-    </FrameLayout>
+        tools:layout_editor_absoluteY="8dp"></FrameLayout>
 </LinearLayout>
