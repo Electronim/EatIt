@@ -21,6 +21,9 @@
         </activity>
         <activity android:name=".MainMenuActivity"></activity>
         <activity android:name=".MainActivity"></activity>
+        <activity android:name=".DescriptionPopUp"
+            android:theme="@style/AppTheme.PopUpTheme">
+        </activity>
     </application>
 
 </manifest>
