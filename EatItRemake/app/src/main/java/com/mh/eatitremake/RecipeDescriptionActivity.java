@@ -19,25 +19,25 @@ public class RecipeDescriptionActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_recipe_description);
-        Animation a = AnimationUtils.loadAnimation(this, R.anim.animations);
-        a.reset();
-        recipeDescription = (TextView) findViewById(R.id.recipe_description);
-        mImage = (ImageView) findViewById(R.id.recipe_image);
-
-
-        Intent mIntent = getIntent();
-
-        if (mIntent != null){
-            Bundle mBundle = mIntent.getExtras();
-            recipeDescriptionText = (String) mBundle.get("RECIPE_DESCRIPTION");
-            pictureUrl = (String) mBundle.get("RECIPE_URL");
-            if (pictureUrl != null)
-                Picasso.get().load(pictureUrl).into(mImage);
-            if (recipeDescriptionText != null)
-                recipeDescription.setText(recipeDescriptionText);
-
-        }
+//        setContentView(R.layout.activity_recipe_description);
+//        Animation a = AnimationUtils.loadAnimation(this, R.anim.animations);
+//        a.reset();
+//        recipeDescription = (TextView) findViewById(R.id.recipe_description);
+//        mImage = (ImageView) findViewById(R.id.recipe_image);
+//
+//
+//        Intent mIntent = getIntent();
+//
+//        if (mIntent != null){
+//            Bundle mBundle = mIntent.getExtras();
+//            recipeDescriptionText = (String) mBundle.get("RECIPE_DESCRIPTION");
+//            pictureUrl = (String) mBundle.get("RECIPE_URL");
+//            if (pictureUrl != null)
+//                Picasso.get().load(pictureUrl).into(mImage);
+//            if (recipeDescriptionText != null)
+//                recipeDescription.setText(recipeDescriptionText);
+//
+//        }
     }
 
 }

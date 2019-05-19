@@ -80,8 +80,8 @@ public class RecipeFragment extends Fragment {
             public void onClick(View view, final int position) {
                 Log.d("CLICK_TAG", "am dat click pe positia: " + position);
                 // TODO button click inside of recycler view
-                Recipe recipe =mRecipes.get(position);
-                Intent mIntent = new Intent(view.getContext(), RecipeDescriptionActivity.class);
+                Recipe recipe = mRecipes.get(position);
+                Intent mIntent = new Intent(view.getContext(), DescriptionPopUp.class);
                 mIntent.putExtra("RECIPE_DESCRIPTION",recipe.getmNotes());
                 mIntent.putExtra("RECIPE_URL",recipe.getPictureUrl());
                 startActivity(mIntent);
