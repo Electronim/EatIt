@@ -57,8 +57,7 @@ public class NewRecipeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivityForResult(getPickImageChooserIntent(), 200);
-                if (picUri != null)
-                    Picasso.get().load(picUri).into(imageView);
+
             }
         });
         permissions.add(CAMERA);
@@ -186,6 +185,7 @@ public class NewRecipeActivity extends AppCompatActivity {
             if (getPickImageResultUri(data) != null) {
                 picUri = getPickImageResultUri(data);
                 Log.d(TAG, picUri.toString());
+                Picasso.get().load(picUri).into(imageView);
             }
 
         }
