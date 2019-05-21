@@ -12,7 +12,6 @@ public class RecipeViewHolder extends RecyclerView.ViewHolder{
     public TextView dificultyTextView;
     public TextView preptimeTextView;
     public TextView typeTextView;
-
     public RatingBar ratingBar;
     public ImageView recipeImage;
 
