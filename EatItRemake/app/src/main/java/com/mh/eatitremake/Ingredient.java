@@ -1,5 +1,9 @@
 package com.mh.eatitremake;
 
+import android.os.Build;
+
+import java.util.Objects;
+
 public class Ingredient {
     private String name;
     private String pictureUrl;
@@ -29,5 +33,21 @@ public class Ingredient {
 
     public void setPictureUrl(String pictureUrl) {
         this.pictureUrl = pictureUrl;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ingredient that = (Ingredient) o;
+        return name.equals(that.name);
+    }
+
+    @Override
+    public int hashCode() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            return Objects.hash(name);
+        }
+        return Integer.valueOf(name);
     }
 }

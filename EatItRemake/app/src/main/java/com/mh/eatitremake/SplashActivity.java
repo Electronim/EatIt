@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
+import java.util.List;
+import java.util.Set;
+
 
 public class SplashActivity extends Activity {
     Handler handler;
