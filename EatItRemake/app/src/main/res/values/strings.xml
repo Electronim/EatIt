@@ -2,4 +2,5 @@
     <string name="app_name">Eat It</string>
     <string name="select_a_recipe">Select a recipe</string>
     <string name="search">Search</string>
+    <string name="add">Add</string>
 </resources>
