@@ -29,11 +29,6 @@ public class RecipeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecipeAdapter mRecipeAdapter;
     private List<Recipe> mRecipes;
-    private List<Recipe> mDatabaseSaved;
-    private Set<Ingredient> mGlobalIngredients;
-
-    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference myRefChildren = myRef.child("recipes");
 
 
     private void populateRecipes() {
@@ -54,7 +49,6 @@ public class RecipeFragment extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
 
         mRecipes = new ArrayList<>();
-        mDatabaseSaved = new ArrayList<>();
         mRecipeAdapter = new RecipeAdapter(mRecipes);
 
         populateRecipes();
@@ -98,18 +92,9 @@ public class RecipeFragment extends Fragment {
         return mRecipeAdapter;
     }
 
-    public List<Recipe> getmDatabaseSaved() {
-        return mDatabaseSaved;
-    }
-
     public void setmRecipes(List<Recipe> recipes) {
        mRecipes.clear();
        mRecipes.addAll(recipes);
        mRecipeAdapter.notifyDataSetChanged();
-    }
-
-
-    public Set<Ingredient> getmGlobalIngredients(){
-        return mGlobalIngredients;
     }
 }
