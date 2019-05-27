@@ -54,14 +54,14 @@ public class MatchIngredients extends AppCompatActivity {
     protected List<RecipeCompatibility> matchIngredients(List<Ingredient> ingredients) {
         final RecipeFragment details = new RecipeFragment();
         details.setArguments(getIntent().getExtras());
-        details.populateRecipes();
+        // details.populateRecipes();
 
         List<RecipeCompatibility> recipeComp = new ArrayList<>();
         List<Recipe> allRecipies = details.getmDatabaseSaved();
 
         List<RecipeCompatibility> result = new ArrayList<>();
 
-        
+
 
 
 

@@ -21,36 +21,24 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RecipeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecipeAdapter mRecipeAdapter;
     private List<Recipe> mRecipes;
     private List<Recipe> mDatabaseSaved;
+    private Set<Ingredient> mGlobalIngredients;
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference myRefChildren = myRef.child("recipes");
 
-    public void populateRecipes() {
-        myRefChildren.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot recipeDataSnapshot : dataSnapshot.getChildren()) {
-                    Recipe recipe = recipeDataSnapshot.getValue(Recipe.class);
 
-                    mRecipes.add(recipe);
-                }
-
-                mRecipeAdapter.notifyDataSetChanged();
-                mDatabaseSaved.addAll(mRecipes);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
+    private void populateRecipes() {
+        mRecipes.addAll(MainMenuActivity.mDatabaseSaved);
+        mRecipeAdapter.notifyDataSetChanged();
     }
 
 
@@ -67,11 +55,13 @@ public class RecipeFragment extends Fragment {
 
         mRecipes = new ArrayList<>();
         mDatabaseSaved = new ArrayList<>();
+        mRecipeAdapter = new RecipeAdapter(mRecipes);
+
         populateRecipes();
 
         Log.d("List: ", mRecipes.toString());
 
-        mRecipeAdapter = new RecipeAdapter(mRecipes);
+
         mRecyclerView.setAdapter(mRecipeAdapter);
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(),
@@ -116,5 +106,10 @@ public class RecipeFragment extends Fragment {
        mRecipes.clear();
        mRecipes.addAll(recipes);
        mRecipeAdapter.notifyDataSetChanged();
+    }
+
+
+    public Set<Ingredient> getmGlobalIngredients(){
+        return mGlobalIngredients;
     }
 }
