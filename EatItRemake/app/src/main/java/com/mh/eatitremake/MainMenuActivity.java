@@ -44,6 +44,14 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MainMenuActivity.this, MainActivity.class));
             }
         });
+
+        Button ingredientsSelection = findViewById(R.id.ingredients_selection);
+        ingredientsSelection.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainMenuActivity.this, SelectIngredientActivity.class));
+            }
+        });
         populateRecipes();
     }
 
