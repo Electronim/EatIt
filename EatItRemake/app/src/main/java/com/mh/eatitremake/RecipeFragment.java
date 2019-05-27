@@ -21,36 +21,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class RecipeFragment extends Fragment {
     private RecyclerView mRecyclerView;
     private RecipeAdapter mRecipeAdapter;
     private List<Recipe> mRecipes;
-    private List<Recipe> mDatabaseSaved;
-
-    DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
-    DatabaseReference myRefChildren = myRef.child("recipes");
 
     private void populateRecipes() {
-        myRefChildren.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot recipeDataSnapshot : dataSnapshot.getChildren()) {
-                    Recipe recipe = recipeDataSnapshot.getValue(Recipe.class);
-
-                    mRecipes.add(recipe);
-                }
-
-                mRecipeAdapter.notifyDataSetChanged();
-                mDatabaseSaved.addAll(mRecipes);
-            }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-            }
-        });
-
+        mRecipes.addAll(MainMenuActivity.mDatabaseSaved);
+        mRecipeAdapter.notifyDataSetChanged();
     }
 
 
@@ -66,12 +48,13 @@ public class RecipeFragment extends Fragment {
         mRecyclerView.setLayoutManager(layoutManager);
 
         mRecipes = new ArrayList<>();
-        mDatabaseSaved = new ArrayList<>();
+        mRecipeAdapter = new RecipeAdapter(mRecipes);
+
         populateRecipes();
 
         Log.d("List: ", mRecipes.toString());
 
-        mRecipeAdapter = new RecipeAdapter(mRecipes);
+
         mRecyclerView.setAdapter(mRecipeAdapter);
 
         mRecyclerView.addOnItemTouchListener(new RecyclerTouchListener(getContext(),
@@ -106,10 +89,6 @@ public class RecipeFragment extends Fragment {
 
     public RecipeAdapter getmRecipeAdapter() {
         return mRecipeAdapter;
-    }
-
-    public List<Recipe> getmDatabaseSaved() {
-        return mDatabaseSaved;
     }
 
     public void setmRecipes(List<Recipe> recipes) {
