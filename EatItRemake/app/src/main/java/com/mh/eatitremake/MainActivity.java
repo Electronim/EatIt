@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                 EditText searchText = (EditText) findViewById(R.id.actv);
                 String recipeName = searchText.getText().toString();
 
-                List<Recipe> recipes = details.getmDatabaseSaved();
+                List<Recipe> recipes = MainMenuActivity.mDatabaseSaved;
                 List<Recipe> result = new ArrayList<>();
                 for (Recipe recipe: recipes) {
                     if (recipeName.length() == 0) {
