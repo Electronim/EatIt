@@ -25,6 +25,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     private List<String> recipesNames = new ArrayList<>();
     private ArrayAdapter<String> recipesNameAdapter;
+    private AutoCompleteTextView editText;
     private android.support.v4.app.FragmentTransaction ft;
 
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
@@ -36,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
         recipesNameAdapter =
-            new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, recipesNames);
+            new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getRecipesNames());
 
         /* ---- This one below is used to populate the database. DO NOT REMOVE! ----*/
         /* Util.parseCSV(getAssets());
@@ -55,7 +56,8 @@ public class MainActivity extends AppCompatActivity {
         ft.replace(R.id.place_holder, details);
         ft.commit();
 
-        populateSearchRecipeNames();
+        editText = findViewById(R.id.actv);
+        editText.setAdapter(recipesNameAdapter);
 
         // added search button
         Button btn = (Button) findViewById(R.id.search_button);
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 EditText searchText = (EditText) findViewById(R.id.actv);
                 String recipeName = searchText.getText().toString();
+                searchText.setText("");
 
                 List<Recipe> recipes = MainMenuActivity.mDatabaseSaved;
                 List<Recipe> result = new ArrayList<>();
@@ -82,25 +85,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    protected void populateSearchRecipeNames() {
-        myRefChildren.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot recipeDataSnapshot: dataSnapshot.getChildren()) {
-                    Recipe recipe = recipeDataSnapshot.getValue(Recipe.class);
-
-                    recipesNames.add(recipe.getmName());
-                }
-
-                recipesNameAdapter.notifyDataSetChanged();
-
-                AutoCompleteTextView editText = findViewById(R.id.actv);
-                editText.setAdapter(recipesNameAdapter);
-            }
-
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-        });
+    public List<String> getRecipesNames(){
+        List<String> mRecipesNames = new ArrayList<>();
+        for (Recipe recipe: MainMenuActivity.mDatabaseSaved){
+            mRecipesNames.add(recipe.getmName());
+        }
+        return mRecipesNames;
     }
 }
