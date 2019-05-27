@@ -26,5 +26,13 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MainMenuActivity.this, MainActivity.class));
             }
         });
+
+        Button add_new_recipe_button = findViewById(R.id.add_new_recipe);
+        add_new_recipe_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainMenuActivity.this, NewRecipeActivity.class));
+            }
+        });
     }
 }

@@ -4,7 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@mipmap/bg_abstract"
     tools:context=".NewRecipeActivity">
+
+    <!--<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--android:id="@+id/action_bar"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:minHeight="?attr/actionBarSize"-->
+        <!--android:layout_gravity="top"-->
+        <!--android:gravity="top"-->
+        <!--android:background="@color/colorPrimary"-->
+        <!--app:layout_constraintEnd_toEndOf="parent"-->
+        <!--app:layout_constraintStart_toStartOf="parent"-->
+        <!--app:layout_constraintTop_toTopOf="parent">-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/action_bar_logo"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:src="@mipmap/eat_it_logo_3"-->
+            <!--android:text="Toolbar Title" />-->
+
+    <!--</android.support.v7.widget.Toolbar>-->
 
     <Button
         android:id="@+id/add_recipe_button"
@@ -13,35 +36,42 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="8dp"
         android:onClick="addRecipeOnClick"
         android:text="Finish Recipe"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_imageview" />
+        app:layout_constraintTop_toBottomOf="@+id/recipe_input_description_edittext_scroll" />
 
     <Button
         android:id="@+id/add_image_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
+        android:background="@drawable/button_round_shape"
+        android:fontFamily="sans-serif-thin"
         android:text="Add Image"
+        android:textColor="@android:color/white"
+        android:textSize="15sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/recipe_imageview"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_ratingBar" />
+        app:layout_constraintStart_toEndOf="@+id/recipe_preptime_edittext"
+        app:layout_constraintTop_toBottomOf="@+id/recipe_imageview" />
 
     <EditText
         android:id="@+id/recipe_name_edittext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="Recipe name"
+        android:inputType="textPersonName"
+        android:textColorHint="@android:color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -50,7 +80,7 @@
         android:layout_width="395dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,7 +91,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipe_type_spinner">
 
@@ -69,7 +99,7 @@
             android:id="@+id/radio_group_header"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Choose the recipe complexity :" />
+            android:text="Choose recipe complexity :" />
 
         <RadioButton
             android:id="@+id/radioHard"
@@ -95,44 +125,60 @@
 
     <RatingBar
         android:id="@+id/recipe_ratingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="238dp"
+        android:layout_height="51dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_input_description_edittext" />
-
-    <EditText
-        android:id="@+id/recipe_input_description_edittext"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:hint="Recipe Description"
-        android:inputType="textMultiLine"
+        android:progressBackgroundTint="@color/whiteColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/recipe_preptime_edittext" />
 
+    <ScrollView
+        android:id="@+id/recipe_input_description_edittext_scroll"
+        android:layout_width="392dp"
+        android:layout_height="170dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipe_ratingBar">
+
+        <EditText
+            android:id="@+id/recipe_input_description_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Recipe Description"
+            android:textColorHint="@color/whiteColor"
+            android:textColor="@color/whiteColor"
+            android:inputType="textMultiLine"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipe_preptime_edittext" />
+
+    </ScrollView>
+
     <EditText
         android:id="@+id/recipe_preptime_edittext"
-        android:layout_width="wrap_content"
+        android:layout_width="187dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
         android:ems="10"
         android:hint="Preparation Time"
+        android:textColorHint="@color/whiteColor"
+        android:textColor="@color/whiteColor"
         android:inputType="number"
+        app:layout_constraintEnd_toStartOf="@+id/recipe_imageview"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/complexity_radio_group" />
 
     <ImageView
         android:id="@+id/recipe_imageview"
-        android:layout_width="157dp"
-        android:layout_height="162dp"
-        android:layout_marginStart="8dp"
+        android:layout_width="177dp"
+        android:layout_height="125dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipe_ratingBar"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/recipe_type_spinner"
         app:srcCompat="@mipmap/bg_browse" />
 </android.support.constraint.ConstraintLayout>
