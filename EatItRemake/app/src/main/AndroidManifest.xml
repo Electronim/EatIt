@@ -8,22 +8,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NewRecipeActivity">
+        <activity android:name=".MatchIngredients">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".RecipeDescriptionActivity"></activity>
-        <activity android:name=".SplashActivity">
+        <activity android:name=".NewRecipeActivity"></activity>
+        <activity android:name=".RecipeDescriptionActivity" />
+        <activity android:name=".SplashActivity"></activity>
+        <activity android:name=".MainMenuActivity">
 
         </activity>
-        <activity android:name=".MainMenuActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".DescriptionPopUp"
-            android:theme="@style/AppTheme.PopUpTheme"></activity>
+            android:theme="@style/AppTheme.PopUpTheme" />
     </application>
 
 </manifest>

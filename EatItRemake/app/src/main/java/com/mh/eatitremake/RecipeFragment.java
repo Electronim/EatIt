@@ -32,7 +32,7 @@ public class RecipeFragment extends Fragment {
     DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
     DatabaseReference myRefChildren = myRef.child("recipes");
 
-    private void populateRecipes() {
+    public void populateRecipes() {
         myRefChildren.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
