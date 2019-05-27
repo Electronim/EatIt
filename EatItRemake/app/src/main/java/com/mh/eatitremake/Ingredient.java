@@ -2,9 +2,10 @@ package com.mh.eatitremake;
 
 import android.os.Build;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Ingredient {
+public class Ingredient implements Serializable {
     private String name;
     private String pictureUrl;
     private Integer calories;

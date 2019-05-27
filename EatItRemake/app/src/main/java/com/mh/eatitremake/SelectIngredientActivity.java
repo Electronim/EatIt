@@ -1,5 +1,7 @@
 package com.mh.eatitremake;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -25,6 +27,8 @@ public class SelectIngredientActivity extends AppCompatActivity {
     private TextView mIngredientsTextView;
     private Set<Ingredient> result = new HashSet<>();
     private AutoCompleteTextView editText;
+    private  Button btn;
+    private Button finishButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +46,9 @@ public class SelectIngredientActivity extends AppCompatActivity {
 
 
         // added search button
-        Button btn = (Button) findViewById(R.id.search_button_ingredient);
+        btn = (Button) findViewById(R.id.search_button_ingredient);
+        finishButton = (Button) findViewById(R.id.finish_ingredientlist_button);
+
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view) {
@@ -73,6 +79,13 @@ public class SelectIngredientActivity extends AppCompatActivity {
             mIngredientsNames.add(ingredient.getName());
         }
         return mIngredientsNames;
+    }
+
+    public void finishIngredientListOnClick(View v){
+        Intent mIntent = getIntent();
+        mIntent.putExtra("IngredientList",new ArrayList<Ingredient>(result));
+        setResult(Activity.RESULT_OK,mIntent);
+        finish();
     }
 
 }
