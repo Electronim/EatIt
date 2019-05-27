@@ -31,6 +31,7 @@ import static android.Manifest.permission_group.CAMERA;
 
 public class NewRecipeActivity extends AppCompatActivity {
     private static final String TAG = "NEWRECIPETAG";
+    private static final Integer KEY_CODE = 98;
     Button addRecipeButton;
     Button addImageButon;
     EditText recipeName;
@@ -180,6 +181,16 @@ public class NewRecipeActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        if (requestCode == KEY_CODE){ //daca e adevarat, intentul vine de la ingrediente
+            if (resultCode == Activity.RESULT_OK) {
+                ArrayList<Ingredient> ingredientList = (ArrayList<Ingredient>) data.getExtras().getSerializable("IngredientList");
+                Log.d(TAG,ingredientList.toString());
+                for (Ingredient ingredient : ingredientList){
+                    recipeDescription.setText("-"+ingredient.getName()+"\n"+recipeDescription.getText());
+                }
+            }
+        }
+        else // altfel, intentul vine de la camera
         if (resultCode == Activity.RESULT_OK) {
 
 
@@ -233,5 +244,10 @@ public class NewRecipeActivity extends AppCompatActivity {
 
     private boolean canMakeSmores() {
         return (Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP_MR1);
+    }
+
+    public void addIngredientsOnClick(View view) {
+        Intent mIntent = new Intent(NewRecipeActivity.this,SelectIngredientActivity.class);
+        startActivityForResult(mIntent, KEY_CODE);
     }
 }
