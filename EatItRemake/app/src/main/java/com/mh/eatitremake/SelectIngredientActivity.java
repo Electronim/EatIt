@@ -33,6 +33,7 @@ public class SelectIngredientActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(R.layout.activity_select_ingredient);
         mIngredientsTextView = findViewById(R.id.ingredients_list_textview);
 
