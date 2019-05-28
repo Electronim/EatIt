@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -104,7 +105,9 @@ public class NewRecipeActivity extends AppCompatActivity {
         String type = typeSpinner.getSelectedItem().toString();
         Integer rating = recipeRating.getNumStars();
         String description = recipeDescription.getText().toString();
-        Integer prepTime = Integer.parseInt(recipePrepTime.getText().toString());
+        Integer prepTime = null;
+        if (recipePrepTime.getText().length()>0)
+            prepTime = Integer.parseInt(recipePrepTime.getText().toString());
 
         int id  = (int)complexityGroup.getCheckedRadioButtonId();
         switch (id){
@@ -118,7 +121,8 @@ public class NewRecipeActivity extends AppCompatActivity {
                 complexity = "Easy";
                 break;
         }
-        Recipe newRecipe = new Recipe(name,rating,complexity,description,type,prepTime,picUri.toString(),recipeIngredients);
+        if (name != null && rating != null && complexity != null && description != null && type != null && prepTime != null && picUri != null && recipeIngredients != null )
+        {Recipe newRecipe = new Recipe(name,rating,complexity,description,type,prepTime,picUri.toString(),recipeIngredients);
 
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference myRefChildren = myRef.child("recipes");
@@ -127,6 +131,10 @@ public class NewRecipeActivity extends AppCompatActivity {
 
         Intent tempIntent = new Intent (NewRecipeActivity.this,MainMenuActivity.class);
         startActivity(tempIntent);
+        }
+        else{
+            Toast.makeText(getBaseContext(), "Fill in all the fields!", Toast.LENGTH_LONG).show();
+        }
     }
 
     public Intent getPickImageChooserIntent() {
