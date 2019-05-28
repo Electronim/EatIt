@@ -24,17 +24,17 @@
 
     <Button
         android:id="@+id/TestButton"
-        android:layout_width="121dp"
-        android:layout_height="56dp"
+        android:layout_width="189dp"
+        android:layout_height="49dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/button_round_shape"
         android:fontFamily="sans-serif-thin"
+        android:text="Select ingredients"
         android:textColor="@android:color/white"
         android:textSize="15sp"
         android:textStyle="bold"
-        android:text="Button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
