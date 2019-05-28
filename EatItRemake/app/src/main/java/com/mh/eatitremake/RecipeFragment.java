@@ -30,6 +30,7 @@ public class RecipeFragment extends Fragment {
     private RecipeAdapter mRecipeAdapter;
     private List<Recipe> mRecipes;
 
+
     private void populateRecipes() {
         mRecipes.addAll(MainMenuActivity.mDatabaseSaved);
         mRecipeAdapter.notifyDataSetChanged();
