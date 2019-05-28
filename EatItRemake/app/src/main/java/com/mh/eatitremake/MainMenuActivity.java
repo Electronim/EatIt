@@ -60,6 +60,15 @@ public class MainMenuActivity extends AppCompatActivity {
                 startActivity(new Intent(MainMenuActivity.this, NewRecipeActivity.class));
             }
         });
+
+        Button rate_application = findViewById(R.id.rate);
+        rate_application.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainMenuActivity.this, RateApplicationPopUpActivity.class));
+            }
+        });
+
         populateRecipes();
     }
 
