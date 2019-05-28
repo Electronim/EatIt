@@ -1,5 +1,8 @@
 package com.mh.eatitremake;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -14,6 +17,8 @@ import java.util.List;
 
 public class MatchIngredients extends AppCompatActivity {
     private int FIXED_SIZE = 20;
+    private int KEY_CODE = 42;
+    private RecipeFragment details = null;
     private android.support.v4.app.FragmentTransaction ft;
 
     @Override
@@ -22,7 +27,7 @@ public class MatchIngredients extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_match_ingredients);
 
-        final RecipeFragment details = new RecipeFragment();
+        details = new RecipeFragment();
         details.setArguments(getIntent().getExtras());
         ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.matched_recipes, details);
@@ -32,16 +37,22 @@ public class MatchIngredients extends AppCompatActivity {
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Ingredient> ing = new ArrayList<>();
-                ing.add(new Ingredient("Noodles", "", 0));
-//                ing.add(new Ingredient("Ham", "", 0));
-//                ing.add(new Ingredient("Ham", "", 0));
-                List<Recipe> resultedRecipes =
-                        matchIngredients(ing);
+                Intent mIntent = new Intent(MatchIngredients.this, SelectIngredientActivity.class);
+                startActivityForResult(mIntent, KEY_CODE);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if (requestCode == KEY_CODE){ //daca e adevarat, intentul vine de la ingrediente
+            if (resultCode == Activity.RESULT_OK) {
+                ArrayList<Ingredient> ingredientList = (ArrayList<Ingredient>) data.getExtras().getSerializable("IngredientList");
+                List<Recipe> resultedRecipes = matchIngredients(ingredientList);
 
                 details.setmRecipes(resultedRecipes);
             }
-        });
+        }
     }
 
     class RecipeCompatibility {

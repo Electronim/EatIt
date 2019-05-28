@@ -40,13 +40,19 @@ public class MainActivity extends AppCompatActivity {
             new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, getRecipesNames());
 
         /* ---- This one below is used to populate the database. DO NOT REMOVE! ----*/
-        /* Util.parseCSV(getAssets());
-        List<Recipe> recipeData = Util.getData();
-
-        for (int i = 0; i < recipeData.size(); i++) {
-            int id = 1000 + i;
-            myRef.child("recipes").child(Integer.toString(id)).setValue(recipeData.get(i));
-        } */
+//        Util.parseCSV(getAssets());
+//        List<Recipe> recipeData = Util.getData();
+//
+//        for (int i = 0; i < recipeData.size(); i++) {
+//            int id = 1000 + i;
+//
+//            Recipe recipe = recipeData.get(i);
+//            for (Ingredient ingredient: recipe.getmIngredients()) {
+//                ingredient.setNume(ingredient.getName().toLowerCase());
+//            }
+//
+//            myRef.child("recipes").child(Integer.toString(id)).setValue(recipeData.get(i));
+//        }
         /* ------------------------------------------------------------------------- */
 
 
