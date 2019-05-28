@@ -25,7 +25,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class SelectIngredientActivity extends AppCompatActivity {
+public class SelectIngredientActivity extends Activity {
 
     private ArrayAdapter<String> IngredientNameAdapter;
     private TextView mIngredientsTextView;
@@ -37,8 +37,21 @@ public class SelectIngredientActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_select_ingredient);
+
+        DisplayMetrics dm = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(dm);
+
+        int width = dm.widthPixels;
+        int height = dm.heightPixels;
+
+        getWindow().setLayout((int)(width * .8), (int)(height * .7));
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
+        getWindow().setDimAmount(.75f);
+
+        Animation a = AnimationUtils.loadAnimation(this, R.anim.animations);
+        a.reset();
+
         mIngredientsTextView = findViewById(R.id.ingredients_list_textview);
 
         IngredientNameAdapter =
