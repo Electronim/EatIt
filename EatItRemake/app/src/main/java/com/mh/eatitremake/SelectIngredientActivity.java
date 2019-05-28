@@ -22,16 +22,18 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 
 public class SelectIngredientActivity extends Activity {
 
     private ArrayAdapter<String> IngredientNameAdapter;
     private TextView mIngredientsTextView;
-    private Set<Ingredient> result = new HashSet<>();
+    private Set<Ingredient> result = new LinkedHashSet<>();
     private AutoCompleteTextView editText;
-    private  Button btn;
+    private  Button btn, removeButton;
     private Button finishButton;
 
     @Override
@@ -65,6 +67,7 @@ public class SelectIngredientActivity extends Activity {
         // added search button
         btn = (Button) findViewById(R.id.search_button_ingredient);
         finishButton = (Button) findViewById(R.id.finish_ingredientlist_button);
+        removeButton = (Button) findViewById(R.id.remove_last_ingredient);
 
         btn.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -79,13 +82,31 @@ public class SelectIngredientActivity extends Activity {
                 for (Ingredient ingredient: ingredients) {
                     if (ingredient.getName().equals(ingredientName) && !result.contains(ingredient)) {
                         result.add(ingredient);
-                        mIngredientsTextView.setText(mIngredientsTextView.getText() + "\n -" + ingredient.getName());
+                        mIngredientsTextView.setText(mIngredientsTextView.getText() + " - " + ingredient.getName() + "\n");
                     }
                 }
 
             }
 
         });
+
+        removeButton.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+
+                if (!result.isEmpty()) {
+                    Ingredient aux = null;
+                    for (Ingredient ingredient : result) {
+                        aux = ingredient;
+                    }
+                    result.remove(aux);
+                    int length = mIngredientsTextView.getText().toString().lastIndexOf('-');
+                    mIngredientsTextView.setText(mIngredientsTextView.getText().toString().substring(0, length));
+                }
+            }
+
+        });
+
 
 
     }
