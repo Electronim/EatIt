@@ -123,7 +123,7 @@ public class NewRecipeActivity extends AppCompatActivity {
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
         DatabaseReference myRefChildren = myRef.child("recipes");
         myRef.child("recipes").child(Integer.toString(MainMenuActivity.mDatabaseSaved.size()+1000)).setValue(newRecipe);
-        MainMenuActivity.mDatabaseSaved.add(newRecipe);
+//        MainMenuActivity.mDatabaseSaved.add(newRecipe);
 
         Intent tempIntent = new Intent (NewRecipeActivity.this,MainMenuActivity.class);
         startActivity(tempIntent);
