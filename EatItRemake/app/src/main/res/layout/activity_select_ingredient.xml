@@ -9,18 +9,18 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="302dp"
+        android:layout_height="29dp"
+        android:layout_marginStart="55dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="55dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <AutoCompleteTextView
             android:id="@+id/search_ingredients"
-            android:layout_width="280dp"
+            android:layout_width="234dp"
             android:layout_height="wrap_content"
             android:background="@color/whiteColor"
             android:completionHint="Select an ingredient"
@@ -41,11 +41,11 @@
 
     <ScrollView
         android:id="@+id/ingredients_list_scrollview"
-        android:layout_width="393dp"
-        android:layout_height="501dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="316dp"
+        android:layout_height="345dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginEnd="41dp"
         app:layout_constrainedHeight="true"
         app:layout_constrainedWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,12 +71,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="25dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
         android:onClick="finishIngredientListOnClick"
         android:text="Finish Ingredient List"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ingredients_list_scrollview" />
