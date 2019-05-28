@@ -10,6 +10,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".SelectIngredientActivity"
             android:theme="@style/AppTheme.PopUpTheme"></activity>
+        <activity android:name=".MatchIngredients"></activity>
         <activity android:name=".NewRecipeActivity"></activity>
         <activity android:name=".RecipeDescriptionActivity" />
         <activity android:name=".SplashActivity">
