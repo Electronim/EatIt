@@ -21,6 +21,8 @@ import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.Spinner;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.io.File;
@@ -47,7 +49,7 @@ public class NewRecipeActivity extends AppCompatActivity {
     private ArrayList permissionsRejected = new ArrayList();
     private ArrayList permissions = new ArrayList();
     private final static int ALL_PERMISSIONS_RESULT = 107;
-
+    private ArrayList<Ingredient> recipeIngredients = null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -116,6 +118,15 @@ public class NewRecipeActivity extends AppCompatActivity {
                 complexity = "Easy";
                 break;
         }
+        Recipe newRecipe = new Recipe(name,rating,complexity,description,type,prepTime,picUri.toString(),recipeIngredients);
+
+        DatabaseReference myRef = FirebaseDatabase.getInstance().getReference();
+        DatabaseReference myRefChildren = myRef.child("recipes");
+        myRef.child("recipes").child(Integer.toString(MainMenuActivity.mDatabaseSaved.size()+1000)).setValue(newRecipe);
+//        MainMenuActivity.mDatabaseSaved.add(newRecipe);
+
+        Intent tempIntent = new Intent (NewRecipeActivity.this,MainMenuActivity.class);
+        startActivity(tempIntent);
     }
 
     public Intent getPickImageChooserIntent() {
@@ -184,6 +195,7 @@ public class NewRecipeActivity extends AppCompatActivity {
         if (requestCode == KEY_CODE){ //daca e adevarat, intentul vine de la ingrediente
             if (resultCode == Activity.RESULT_OK) {
                 ArrayList<Ingredient> ingredientList = (ArrayList<Ingredient>) data.getExtras().getSerializable("IngredientList");
+                recipeIngredients = new ArrayList<>(ingredientList);
                 Log.d(TAG,ingredientList.toString());
                 for (Ingredient ingredient : ingredientList){
                     recipeDescription.setText("-"+ingredient.getName()+"\n"+recipeDescription.getText());
@@ -192,8 +204,6 @@ public class NewRecipeActivity extends AppCompatActivity {
         }
         else // altfel, intentul vine de la camera
         if (resultCode == Activity.RESULT_OK) {
-
-
             if (getPickImageResultUri(data) != null) {
                 picUri = getPickImageResultUri(data);
                 Log.d(TAG, picUri.toString());
